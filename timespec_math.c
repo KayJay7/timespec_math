@@ -26,8 +26,7 @@ void timespec_sum(const struct timespec *a, const struct timespec *b, struct tim
 //(a+b/1E9)*c = c*a+cb/1E9
 void timespec_mul(const struct timespec *a, int b, struct timespec *result) {
 	long long temp = (long long) b * (long long) a->tv_nsec;
-    result->tv_sec = a->tv_sec * b;
-    result->tv_sec = result->tv_sec + (temp / 1000000000LL);
+    result->tv_sec = (a->tv_sec * b) + (temp / 1000000000LL);
     result->tv_nsec = temp % 1000000000LL;
 }
 
